@@ -93,14 +93,17 @@ $(function(){
 				  direction=biao[e.keyCode]
 			  }
 		  })
-
-
+		  
+		  var fsp=true;
 		  $('.start').on('click',function () {
-			  clearInterval(timeId);
-			  $('.start').toggleClass('pause')
-			  $('.pause').on('click',function () {
+			  if(fsp){
+				  clearInterval(timeId);
+				  $('.start').addClass('pause')
+			  }else if(!fsp){
 				  timeId=setInterval(move,200);
-			  })
+				  $('.start').removeClass('pause')
+			  }
+			 fsp=!fsp;
 		  })
 
 	  }
